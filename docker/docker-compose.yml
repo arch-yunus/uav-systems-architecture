@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  uav_sim_env:
+    image: ros:humble-ros-base
+    container_name: argus_sim_container
+    volumes:
+      - ..:/root/argus_ws/src/uav-systems-architecture
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+    network_mode: host
+    privileged: true
+    command: /bin/bash -c "source /opt/ros/humble/setup.bash && colcon build && tail -f /dev/null"
+
+  gazebo_sim:
+    image: osrf/ros:humble-desktop-full
+    container_name: argus_gazebo
+    depends_on:
+      - uav_sim_env
+    command: ros2 launch gazebo_ros gazebo.launch.py

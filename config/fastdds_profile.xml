@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
+    <!-- Sovereign Architecture: Hardened QoS Profile -->
+    <participant profile_name="sovereign_participant_profile">
+        <rtps>
+            <name>SovereignUAVNode</name>
+            <useBuiltinTransports>true</useBuiltinTransports>
+        </rtps>
+    </participant>
+
+    <data_writer profile_name="sovereign_reliable_writer">
+        <qos>
+            <reliability>
+                <kind>RELIABLE</kind>
+                <max_blocking_time>
+                    <sec>0</sec>
+                    <nanosec>100000000</nanosec> <!-- 100ms -->
+                </max_blocking_time>
+            </reliability>
+            <durability>
+                <kind>TRANSIENT_LOCAL</kind>
+            </durability>
+            <historyMemoryPolicy>PREALLOCATED_WITH_REALLOC</historyMemoryPolicy>
+        </qos>
+    </data_writer>
+
+    <data_reader profile_name="sovereign_best_effort_reader">
+        <qos>
+            <reliability>
+                <kind>BEST_EFFORT</kind>
+            </reliability>
+            <historyMemoryPolicy>PREALLOCATED</historyMemoryPolicy>
+        </qos>
+    </data_reader>
+</profiles>
