@@ -1,127 +1,103 @@
-<div align="center">
-
 ![UAV Architecture Blueprint](assets/architecture_blueprint.png)
 
-# 🛠️ SUNGUR Architecture: SUNGUR Intelligence `v2.0`
+# 🛸 SUNGUR Akademi: Otonom Sistemler Laboratuvarı `v3.0-Eğitim`
 
-[![ROS2 Humble](https://img.shields.io/badge/Middleware-ROS2--Humble-blue?style=for-the-badge&logo=ros)](https://github.com/arch-yunus/uav-systems-architecture)
-[![Edge AI](https://img.shields.io/badge/Computing-NVIDIA--Orin-green?style=for-the-badge&logo=nvidia)](https://github.com/arch-yunus/uav-systems-architecture)
-[![GNC Logic](https://img.shields.io/badge/Logic-SUNGUR--GNC-orange?style=for-the-badge&logo=dataiku)](https://github.com/arch-yunus/uav-systems-architecture)
+[![Eğitim Lab](https://img.shields.io/badge/Akademi-Yazılım_Lab-blueviolet?style=for-the-badge&logo=airbus)](https://github.com/arch-yunus/uav-systems-architecture)
+[![ROS2 Humble](https://img.shields.io/badge/Platform-ROS2--Humble-blue?style=for-the-badge&logo=ros)](https://docs.ros.org/en/humble/index.html)
+[![Edge AI](https://img.shields.io/badge/Intelligence-Edge--AI-green?style=for-the-badge&logo=nvidia)](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/)
 
-> **"Mühendislik, imkansızı otonom hale getirme sanatıdır."**
+> **"Gerçek bir mühendis kodu ezberlemez, sistemin fiziğini kodlar."**
 
-</div>
-
----
-
-## 🏛️ Vizyon ve Kapsam
-
-Bu depo, modern İHA sistemleri için uçtan uca otonomi, GNC (Guidance, Navigation, Control) ve Edge-AI mimarisi için kesin teknik referanstır. SUNGUR Intelligence mimarisi, en zorlu sahalarda dahi kesintisiz karar verme kabiliyeti üzerine inşa edilmiştir. Bu vizyon, teknik bağımsızlık ve algoritmik üstünlük üzerine kuruludur.
-
-### 🧩 Temel Sütunlar
-1. **Düşük Gecikmeli Kontrol (Low-Latency Loop):** 400Hz+ PID döngüleri ve gerçek zamanlı RTOS katmanı.
-2. **Siber-Asabiyet (Resilient Comms):** Şifreli, çok kanallı ve DDS tabanlı veri sürekliliği.
-3. **Uçta Akıl (Edge Intelligence):** NVIDIA Orin üzerinde doğrudan GPU/NPU kullanarak gerçek zamanlı SLAM, Nesne Tespiti ve Kaçınma.
+**SUNGUR Otonom Sistemler Laboratuvarı**'na hoş geldiniz. Bu depo, SUNGUR İHA Mühendisliği Akademisi'nin yazılım ve algoritma uygulama merkezidir. Öğrencilerin uçtan uca otonomi, GNC (Guidance, Navigation, Control) ve Edge-AI kavramlarını pratik olarak deneyimleyebileceği eğitici bir "Sandbox" olarak tasarlanmıştır.
 
 ---
 
-## 🏗️ Sistem Topolojisi (Mantıksal & Fiziksel)
+## 🏛️ Eğitim Vizyonu: "Deneyerek Öğren"
 
-Sistem, iş yükünü "Kritik Kontrol" ve "Gelişmiş Görev Mantığı" olarak ikiye bölen dağıtık bir yapıya sahiptir.
+Amacımız, öğrencilere sadece teorik bilgi vermek değil; gerçek dünyada çalışan, endüstriyel standartlardaki algoritmaları (ROS2, TensorRT, FastDDS) kendi bilgisayarlarında derleyip simüle edebilecekleri bir açık kaynaklı laboratuvar sunmaktır.
+
+### 🧩 İncelenecek Temel Sütunlar
+1. **Düşük Gecikmeli Kontrol (Low-Latency Loop):** Öğrenciler, PID kontrolörlerin uçuş dinamiğine etkisini `pid_controller.hpp` üzerinden inceleyebilir.
+2. **Haberleşme Mimarisi:** DDS tabanlı veri sürekliliği ve QoS (Quality of Service) ayarlarının nasıl yapıldığı `fastdds_profile.xml` ile test edilebilir.
+3. **Uçta Akıl (Edge Intelligence):** NVIDIA Orin üzerinde çalışan TensorRT tabanlı otonom karar verme döngüleri.
+
+---
+
+## 🏗️ Sistem Topolojisi (Eğitim Modeli)
+
+Sistem, öğrencilerin "Kritik Kontrol" ve "Gelişmiş Görev Mantığı" ayrımını kavrayabilmesi için dağıtık bir yapıda kurgulanmıştır.
 
 ```mermaid
 graph LR
-    subgraph "Görev Bilgisayarı (Companion Computer - CC)"
-        ROS2[ROS2 Humble / Iron]
-        AI[Edge AI / TensorRT]
-        SLAM[Visual SLAM / LIDAR]
+    subgraph "Görev Bilgisayarı (Öğrenci Yazılım Alanı)"
+        ROS2[ROS2 Humble Eğitici Düğümler]
+        AI[Edge AI / TensorRT Wrapper]
+        SLAM[Visual SLAM Simülasyonu]
         DDS[FastDDS Middleware]
         ROS2 --- AI
         ROS2 --- SLAM
         ROS2 --- DDS
     end
 
-    subgraph "Uçuş Kontrolcüsü (Flight Controller - FC)"
+    subgraph "Uçuş Kontrolcüsü (Donanım Katmanı)"
         RTOS[ChibiOS / NuttX]
         PID[PID Stabilization]
-        SENS[Sensors IMU/Mag/Baro]
         MROS[micro-ROS / MAVLink]
-        PID --- SENS
         PID --- MROS
     end
 
-    subgraph "Dış Dünya / Yer İstasyonu"
-        GCS[QGroundControl / Mission Planner]
-        SAT[GNSS / SatCom]
-        CLOUD[Tactical Cloud]
-    end
-
-    ROS2 <==>|MAVLink / Ethernet / UART| RTOS
-    ROS2 <==>|LTE / 5G / LoRa| GCS
-    DDS <==>|Encrypted Link| CLOUD
-    RTOS ---|DSHOT / PWM| MOTORS[Actuators / Motors]
-    SAT -.-> RTOS
+    ROS2 <==>|Eğitim: MAVLink Bridge| RTOS
+    DDS <==>|Öğrenci Ağ Testleri| CLOUD[Taktik Bulut]
 ```
 
 ---
 
-## 🧠 GNC ve Otonomi Döngüsü
+## 🧠 GNC ve Otonomi Döngüsü (Ders Konuları)
 
-İHA'nın karar verme süreci, iç içe geçmiş üç ana kontrol döngüsünden oluşur:
+Öğrencilerin kodları inceleyerek kavraması beklenen üç ana döngü:
 
 ### 1. Rehberlik (Guidance)
-Görev bilgisayarındaki ROS2 düğümleri (Örn: Nav2), dinamik engelleri ve hedef koordinatlarını analiz ederek optimal rotayı (trajectory) hesaplar.
-- **Teknoloji:** A*, RRT*, Model Predictive Control (MPC).
+ROS2 düğümleri (Örn: `trajectory_generator.cpp`) ile dinamik engellerin analizi ve optimal rota (trajectory) planlaması.
+- **Kavramlar:** A*, RRT*, Model Predictive Control (MPC).
 
 ### 2. Seyrüsefer (Navigation)
-Sensör füzyonu (EKF) kullanılarak cihazın uzaydaki konumu ve yönelimi (state estimation) milimetrik hassasiyetle belirlenir.
-- **Teknoloji:** Visual-Inertial Odometry (VIO), GNSS-RTK, LiDAR SLAM.
+Sensör füzyonu (EKF) kullanılarak cihazın konumunun tahmin edilmesi (state estimation).
+- **Kavramlar:** Visual-Inertial Odometry (VIO), GNSS-RTK.
 
 ### 3. Kontrol (Control)
-FC üzerindeki düşük seviyeli PID döngüleri, rehberlik katmanından gelen komutları motor sinyallerine (PWM/DSHOT) dönüştürür.
-- **Hız:** 400Hz - 8kHz arası çalışma frekansı.
+Düşük seviyeli PID döngülerinin, rehberlik katmanından gelen komutları motor sinyallerine dönüştürmesi.
+- **Kavramlar:** İleri beslemeli (Feed-forward) kontrol, PID Tuning.
 
 ---
 
-## 🥞 Yazılım Katmanları (The Mission Stack)
+## 🥞 Yazılım Katmanları (Akademik Yığın)
 
-| Katman | Fonksiyon | Teknoloji |
+| Katman | İncelenecek Dosyalar | Akademik Odak |
 | :--- | :--- | :--- |
-| **Uygulama** | Otonom Görev Yönetimi | ROS2 Action Servers, Behavior Trees |
-| **Zekâ** | Bilgisayarlı Görü & SLAM | OpenVINO, TensorRT, RTAB-Map |
-| **Middleware** | Veri Dağıtım Servisi | FastDDS (Hardened Config), micro-ROS |
-| **Kontrol** | Stabilizasyon & Donanım | ArduPilot, PX4 Autopilot, STM32 HAL |
+| **Uygulama** | `mission_manager.cpp` | State Machine (Durum Makinesi) tasarımı. |
+| **Zekâ** | `tensorrt_wrapper.py` | Modellerin Edge cihazlara optimize edilmesi. |
+| **Middleware** | `heartbeat_monitor.py` | Dağıtık sistemlerde hata toleransı (Failsafe). |
+| **Kontrol** | `pid_controller.hpp` | Anti-windup ve saturasyon sınırları. |
 
 ---
 
-## 👁️ Edge AI Optimizasyon İş Akışı
+## 🚀 Laboratuvarı Başlatma (Quickstart)
 
-Edge cihazlarda (Jetson/Orin) saniyede 30+ FPS ile analiz yapmak için şu yol izlenir:
-1. **Eğitim:** PyTorch/TensorFlow üzerinde model eğitimi.
-2. **Kuantizasyon:** FP32 modelin FP16 veya INT8 formatına dönüştürülmesi.
-3. **Optimizasyon:** NVIDIA TensorRT ile donanıma özel kernel optimizasyonu.
-4. **Entegrasyon:** `ros2_vision` düğümü ile verinin DDS hattına aktarılması.
-
----
-
-## 🚀 Hızlı Başlangıç (Quickstart)
-
-Tüm mühendislik ortamını (ROS2, MAVLink SDK, OpenCV, TensorRT) tek komutla ayağa kaldırın:
+Tüm eğitim ortamını (ROS2, MAVLink SDK, OpenCV) tek komutla ayağa kaldırın:
 
 ```bash
 chmod +x scripts/bootstrap.sh
 ./scripts/bootstrap.sh --install-all
 ```
 
----
-
-## 🤝 Katkıda Bulunma
-Sovereign Intelligence, açık kaynak komünitesinin gücüyle gelişir. Kritik sistem mimarileri, GNC algoritmaları veya güvenlik yamaları için Pull Request göndermekten çekinmeyin.
-
-**arch-yunus tarafından ⚔️ ile geliştirilmiştir.**
-
----
-
-## 📄 Lisans
-Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır. Bilgiyi özgürce kullanabilir ve gökyüzünün hakimi olabilirsiniz.
+**Docker ile Simülasyon:**
+```bash
+docker-compose up -d
 ```
+
+---
+
+## 🤝 Öğrenci Katkıları
+SUNGUR Akademisi, açık kaynak felsefesiyle büyür. Öğrenciler, laboratuvarda geliştirdikleri yeni ROS2 paketlerini veya optimizasyonları Pull Request (PR) olarak akademiye sunabilirler.
+
+**SUNGUR İHA Akademisi tarafından ⚔️ ile geliştirilmiştir.**
