@@ -6,7 +6,7 @@ def generate_launch_description():
     return LaunchDescription([
         # GNC - Trajectory Generator
         Node(
-            package='uav_systems_architecture',
+            package='sungur_architecture',
             executable='trajectory_generator_node',
             name='trajectory_generator',
             output='screen'
@@ -14,7 +14,7 @@ def generate_launch_description():
         
         # Mission Manager
         Node(
-            package='uav_systems_architecture',
+            package='sungur_architecture',
             executable='mission_manager',
             name='mission_manager',
             output='screen'
@@ -22,7 +22,7 @@ def generate_launch_description():
         
         # Middleware - Heartbeat Monitor
         Node(
-            package='uav_systems_architecture',
+            package='sungur_architecture',
             executable='heartbeat_monitor.py',
             name='heartbeat_monitor',
             output='screen'
@@ -30,7 +30,7 @@ def generate_launch_description():
         
         # Perception - Target Perception (Optional startup)
         Node(
-            package='uav_systems_architecture',
+            package='sungur_architecture',
             executable='target_perception_node.py',
             name='target_perception',
             output='screen'
