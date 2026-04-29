@@ -21,7 +21,7 @@ class HeartbeatMonitor(Node):
         self.last_heartbeat = time.time()
         self.timer = self.create_wall_timer(0.1, self.check_health)
         
-        self.get_logger().info("Sovereign Heartbeat Monitor Initialized.")
+        self.get_logger().info("SUNGUR Heartbeat Monitor Initialized.")
 
     def heartbeat_callback(self, msg):
         self.last_heartbeat = time.time()

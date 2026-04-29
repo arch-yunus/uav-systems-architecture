@@ -12,7 +12,7 @@
 class TrajectoryGeneratorNode : public rclcpp::Node {
 public:
     TrajectoryGeneratorNode() : Node("trajectory_generator_node") {
-        path_pub_ = this->create_publisher<nav_msgs::msg::Path>("sovereign/planned_path", 10);
+        path_pub_ = this->create_publisher<nav_msgs::msg::Path>("sungur/planned_path", 10);
         
         // Timer to simulate path planning every 2 seconds
         timer_ = this->create_wall_timer(

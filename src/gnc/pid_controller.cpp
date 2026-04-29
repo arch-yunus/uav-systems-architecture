@@ -1,5 +1,5 @@
 /**
- * 🦅 ARGUS GNC (Guidance, Navigation, Control)
+ * 🦅 SUNGUR GNC (Guidance, Navigation, Control)
  * Module: High-Frequency PID Controller
  * Developed with ⚔️ by arch-yunus
  */
@@ -34,7 +34,7 @@ int main() {
     double current_pitch = 0.0;
     double dt = 1.0 / 400.0; // 400Hz cycle time
 
-    std::cout << "--- ARGUS GNC PID Loop Başlatıldı ---" << std::endl;
+    std::cout << "--- SUNGUR GNC PID Loop Başlatıldı ---" << std::endl;
 
     for (int i = 0; i < 100; ++i) {
         double control_output = pitch_pid.calculate(target_pitch, current_pitch, dt);

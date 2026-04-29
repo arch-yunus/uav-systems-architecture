@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# ARGUS Engineering Environment Bootstrap Script
+# SUNGUR Engineering Environment Bootstrap Script
 # Version: 1.0.0
 # Developed with ⚔️ by arch-yunus
 
 set -e
 
-echo "🦅 ARGUS Sovereign Intelligence Mühendislik Ortamı Kuruluyor..."
+echo "🦅 SUNGUR Sovereign Intelligence Mühendislik Ortamı Kuruluyor..."
 
 # Gerekli paketlerin kurulumu (Simülasyon)
 install_dependencies() {
@@ -24,7 +24,7 @@ check_ros2() {
     fi
 }
 
-# ARGUS Çalışma Alanı Yapılandırması
+# SUNGUR Çalışma Alanı Yapılandırması
 setup_workspace() {
     echo "🏗️ Çalışma alanı yapılandırılıyor..."
     mkdir -p build install log
@@ -38,4 +38,4 @@ fi
 check_ros2
 setup_workspace
 
-echo "🚀 ARGUS Mühendislik Ortamı hazır! Gökyüzü seni bekliyor."
+echo "🚀 SUNGUR Mühendislik Ortamı hazır! Gökyüzü seni bekliyor."

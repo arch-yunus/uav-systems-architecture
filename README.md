@@ -1,20 +1,22 @@
+<div align="center">
+
 ![UAV Architecture Blueprint](assets/architecture_blueprint.png)
 
-# 🛸 UAV Systems Architecture: Engineering Blueprint `v2.5-Sovereign`
+# 🛠️ SUNGUR Architecture: SUNGUR Intelligence `v2.0`
 
-[![Aerospace Grade](https://img.shields.io/badge/Status-Combat--Ready-blueviolet?style=for-the-badge&logo=airbus)](https://github.com/arch-yunus/uav-systems-architecture)
-[![ROS2 Humble](https://img.shields.io/badge/Platform-ROS2--Humble-blue?style=for-the-badge&logo=ros)](https://docs.ros.org/en/humble/index.html)
-[![Edge AI](https://img.shields.io/badge/Intelligence-Edge--AI-green?style=for-the-badge&logo=nvidia)](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/)
+[![ROS2 Humble](https://img.shields.io/badge/Middleware-ROS2--Humble-blue?style=for-the-badge&logo=ros)](https://github.com/arch-yunus/uav-systems-architecture)
+[![Edge AI](https://img.shields.io/badge/Computing-NVIDIA--Orin-green?style=for-the-badge&logo=nvidia)](https://github.com/arch-yunus/uav-systems-architecture)
+[![GNC Logic](https://img.shields.io/badge/Logic-SUNGUR--GNC-orange?style=for-the-badge&logo=dataiku)](https://github.com/arch-yunus/uav-systems-architecture)
 
 > **"Mühendislik, imkansızı otonom hale getirme sanatıdır."**
 
-Bu depo, modern İHA sistemleri için uçtan uca otonomi, GNC (Guidance, Navigation, Control) ve Edge-AI mimarisi için kesin teknik referanstır. Sovereign Intelligence mimarisi, en zorlu sahalarda dahi kesintisiz karar verme kabiliyeti üzerine inşa edilmiştir.
+</div>
 
 ---
 
-## 🏛️ Mimari Vizyon: "Sovereign Intelligence"
+## 🏛️ Vizyon ve Kapsam
 
-ARGUS ekosistemi, bir İHA'nın sadece "uçmasını" değil, **çatışmalı ve GPS-denied ortamlarda görev icra edebilen bir hava robotu** haline gelmesini sağlayan tüm sistem bileşenlerini kapsar. Bu vizyon, teknik bağımsızlık ve algoritmik üstünlük üzerine kuruludur.
+Bu depo, modern İHA sistemleri için uçtan uca otonomi, GNC (Guidance, Navigation, Control) ve Edge-AI mimarisi için kesin teknik referanstır. SUNGUR Intelligence mimarisi, en zorlu sahalarda dahi kesintisiz karar verme kabiliyeti üzerine inşa edilmiştir. Bu vizyon, teknik bağımsızlık ve algoritmik üstünlük üzerine kuruludur.
 
 ### 🧩 Temel Sütunlar
 1. **Düşük Gecikmeli Kontrol (Low-Latency Loop):** 400Hz+ PID döngüleri ve gerçek zamanlı RTOS katmanı.

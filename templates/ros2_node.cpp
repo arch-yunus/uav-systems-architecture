@@ -9,7 +9,7 @@
 using namespace std::chrono_literals;
 
 /**
- * @brief ARGUS Tactical Node Template
+ * @brief SUNGUR Tactical Node Template
  * 
  * Bu sınıf, profesyonel bir ROS2 düğümü için temel yapı sunar.
  * QoS profilleri, hata yakalama ve yapısal loglama içerir.
@@ -41,7 +41,7 @@ private:
   void timer_callback()
   {
     auto message = std_msgs::msg::String();
-    message.data = "ARGUS_STATUS: NOMINAL | TIME: " + std::to_string(this->now().seconds());
+    message.data = "SUNGUR_STATUS: NOMINAL | TIME: " + std::to_string(this->now().seconds());
     
     // Loglama (Debug seviyesi)
     RCLCPP_DEBUG(this->get_logger(), "Mesaj yayınlanıyor: '%s'", message.data.c_str());

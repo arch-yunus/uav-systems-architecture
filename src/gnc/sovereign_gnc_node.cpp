@@ -9,16 +9,16 @@
 using namespace std::chrono_literals;
 
 /**
- * @brief SovereignGNCNode
+ * @brief SUNGURGNCNode
  * 
  * Bu düğüm, İHA'nın Guidance, Navigation ve Control (GNC) mantığının 
  * ana yönetim merkezidir. MAVROS üzerinden uçuş kontrolcüsü ile 
  * çift yönlü haberleşir.
  */
-class SovereignGNCNode : public rclcpp::Node
+class SUNGURGNCNode : public rclcpp::Node
 {
 public:
-    SovereignGNCNode() : Node("sovereign_gnc_node")
+    SUNGURGNCNode() : Node("sungur_gnc_node")
     {
         // QoS Ayarları: Kritik telemetri için Reliable
         auto qos = rclcpp::QoS(rclcpp::KeepLast(10)).reliable();
@@ -26,7 +26,7 @@ public:
         // Abonelikler
         state_sub_ = this->create_subscription<mavros_msgs::msg::State>(
             "mavros/state", qos, 
-            std::bind(&SovereignGNCNode::state_callback, this, std::placeholders::_1));
+            std::bind(&SUNGURGNCNode::state_callback, this, std::placeholders::_1));
 
         // Yayıncılar
         pose_pub_ = this->create_publisher<geometry_msgs::msg::PoseStamped>(
@@ -34,9 +34,9 @@ public:
 
         // Ana Döngü (20Hz)
         timer_ = this->create_wall_timer(
-            50ms, std::bind(&SovereignGNCNode::control_loop, this));
+            50ms, std::bind(&SUNGURGNCNode::control_loop, this));
 
-        RCLCPP_INFO(this->get_logger(), "Sovereign GNC Core Initialized.");
+        RCLCPP_INFO(this->get_logger(), "SUNGUR GNC Core Initialized.");
     }
 
 private:
@@ -73,7 +73,7 @@ private:
 int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
-    auto node = std::make_shared<SovereignGNCNode>();
+    auto node = std::make_shared<SUNGURGNCNode>();
     rclcpp::spin(node);
     rclcpp::shutdown();
     return 0;

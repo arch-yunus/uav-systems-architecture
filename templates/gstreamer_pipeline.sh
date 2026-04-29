@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARGUS Optimized GStreamer Pipeline Template
+# SUNGUR Optimized GStreamer Pipeline Template
 # Jetson/Orin serisi cihazlarda donanım hızlandırmalı video işleme için tasarlanmıştır.
 
 # 1. USB Kamera üzerinden NVMM (Donanım Belleği) kullanarak 1080p@30fps H.264 Yayını
@@ -10,7 +10,7 @@ DEVICE="/dev/video0"
 REMOTE_IP="192.168.1.100"
 REMOTE_PORT=5000
 
-echo "ARGUS Video Pipeline başlatılıyor: $DEVICE -> $REMOTE_IP:$REMOTE_PORT"
+echo "SUNGUR Video Pipeline başlatılıyor: $DEVICE -> $REMOTE_IP:$REMOTE_PORT"
 
 gst-launch-1.0 v4l2src device=$DEVICE ! \
     "video/x-raw, width=1920, height=1080, framerate=30/1" ! \

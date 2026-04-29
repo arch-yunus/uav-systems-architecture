@@ -3,7 +3,7 @@
 
 #include <algorithm>
 
-namespace sovereign {
+namespace sungur {
 
 /**
  * @brief Industrial-grade PID Controller
@@ -60,6 +60,6 @@ private:
     double last_error_;
 };
 
-} // namespace sovereign
+} // namespace sungur
 
 #endif // SOVEREIGN_PID_HPP

@@ -1,5 +1,5 @@
 """
-🦅 ARGUS Perception System
+🦅 SUNGUR Perception System
 Module: TensorRT Optimized Target Detector
 Developed with ⚔️ by arch-yunus
 """
@@ -9,7 +9,7 @@ import time
 class TargetDetector:
     def __init__(self, model_path: str):
         self.model_path = model_path
-        print(f"📡 [ARGUS Perception] Model yükleniyor: {model_path}")
+        print(f"📡 [SUNGUR Perception] Model yükleniyor: {model_path}")
         # TensorRT Engine loading simulation
         time.sleep(1)
         print("✅ TensorRT Engine optimize edildi ve GPU belleğine aktarıldı.")
@@ -31,7 +31,7 @@ class TargetDetector:
 if __name__ == "__main__":
     detector = TargetDetector("models/yolov8_optimized.engine")
     
-    print("--- ARGUS Perception Döngüsü Başlatıldı ---")
+    print("--- SUNGUR Perception Döngüsü Başlatıldı ---")
     for i in range(1, 21):
         found, box = detector.detect(i)
         if found:

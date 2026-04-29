@@ -1,5 +1,5 @@
 """
-🦅 ARGUS Tactical Decision Engine (TDE)
+🦅 SUNGUR Tactical Decision Engine (TDE)
 Version: 1.0.0-OMEGA
 Architecture: Decentralized Siber-Asabiyet
 Developed with ⚔️ by arch-yunus
@@ -31,7 +31,7 @@ class TelemetryFrame:
 
 class TacticalEngine:
     def __init__(self):
-        self.logger = logging.getLogger("ARGUS_TDE")
+        self.logger = logging.getLogger("SUNGUR_TDE")
         self._current_state = TacticalState.NOMINAL
         self._is_failsafe_active = False
 
@@ -83,4 +83,4 @@ if __name__ == "__main__":
     )
     
     result = engine.process_tactical_cycle(test_frame)
-    print(f"\n[ARGUS_DECISION] >>> {result.name} ({result.value})\n")
+    print(f"\n[SUNGUR_DECISION] >>> {result.name} ({result.value})\n")

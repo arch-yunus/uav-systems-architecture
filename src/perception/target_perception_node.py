@@ -54,7 +54,7 @@ class TargetPerceptionNode(Node):
                 self.get_logger().info(f"Target Detected at: {x+w/2}, {y+h/2}")
 
             # Visualization (Debug only)
-            # cv2.imshow("Sovereign Vision", cv_image)
+            # cv2.imshow("SUNGUR Vision", cv_image)
             # cv2.waitKey(1)
             
         except Exception as e:

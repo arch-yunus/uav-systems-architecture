@@ -22,7 +22,7 @@ public:
         timer_ = this->create_wall_timer(
             1000ms, std::bind(&MissionManager::state_machine_cycle, this));
             
-        RCLCPP_INFO(this->get_logger(), "Sovereign Mission Manager Active.");
+        RCLCPP_INFO(this->get_logger(), "SUNGUR Mission Manager Active.");
     }
 
 private:

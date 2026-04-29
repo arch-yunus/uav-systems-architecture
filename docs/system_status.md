@@ -1,8 +1,8 @@
-# 🛰️ ARGUS System Architecture: Operational Status
+# 🛰️ SUNGUR System Architecture: Operational Status
 
 > **"Göklerin derinliğindeki dijital hakimiyet."**
 
-Bu sayfa, ARGUS sisteminin otonom karar hiyerarşisini ve alt sistem etkileşimlerini görselleştirmektedir.
+Bu sayfa, SUNGUR sisteminin otonom karar hiyerarşisini ve alt sistem etkileşimlerini görselleştirmektedir.
 
 ## 1. Karar Hiyerarşisi (Decision Hierarchy)
 
