@@ -1,0 +1,34 @@
+name: Sovereign CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up ROS2 Humble
+      uses: ros-tooling/setup-ros@v0.6
+      with:
+        required-ros-distributions: humble
+        
+    - name: Build Workspace
+      run: |
+        source /opt/ros/humble/setup.bash
+        mkdir -p ~/sovereign_ws/src
+        cp -r . ~/sovereign_ws/src/uav_systems_architecture
+        cd ~/sovereign_ws
+        colcon build --packages-select uav_systems_architecture
+        
+    - name: Lint Check
+      run: |
+        # Simple linting for Python and C++
+        cd ~/sovereign_ws/src/uav_systems_architecture
+        python3 -m pyflakes src/perception/*.py
+        # cppcheck or similar could be added here
