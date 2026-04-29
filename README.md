@@ -1,3 +1,5 @@
+![UAV Engineering Bootcamp Banner](assets/banner.png)
+
 # UAV Engineering Bootcamp 🎓🚁
 
 İnsansız Hava Araçları (İHA) mühendisliğini, karmaşık denklemlerden ve kitabi teorilerden arındırıp tamamen sahaya, atölyeye ve pratik uygulamaya döken açık kaynaklı eğitim müfredatı.
