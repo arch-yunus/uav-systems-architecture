@@ -1,18 +1,20 @@
 ![UAV Architecture Blueprint](assets/architecture_blueprint.png)
 
-# 🛸 UAV Systems Architecture & Engineering Blueprint `v2.0-Sovereign`
+# 🛸 UAV Systems Architecture: Engineering Blueprint `v2.5-Sovereign`
 
 [![Aerospace Grade](https://img.shields.io/badge/Status-Combat--Ready-blueviolet?style=for-the-badge&logo=airbus)](https://github.com/arch-yunus/uav-systems-architecture)
 [![ROS2 Humble](https://img.shields.io/badge/Platform-ROS2--Humble-blue?style=for-the-badge&logo=ros)](https://docs.ros.org/en/humble/index.html)
 [![Edge AI](https://img.shields.io/badge/Intelligence-Edge--AI-green?style=for-the-badge&logo=nvidia)](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/)
 
 > **"Mühendislik, imkansızı otonom hale getirme sanatıdır."**
-> Modern İHA sistemleri için uçtan uca otonomi, GNC (Guidance, Navigation, Control) ve Edge-AI mimarisi.
+
+Bu depo, modern İHA sistemleri için uçtan uca otonomi, GNC (Guidance, Navigation, Control) ve Edge-AI mimarisi için kesin teknik referanstır.
 
 ---
 
 ## 🏛️ Mimari Vizyon: "Sovereign Intelligence"
-Bu depo, bir İHA'nın sadece "uçmasını" değil, **çatışmalı ve GPS-denied ortamlarda görev icra edebilen bir hava robotu** haline gelmesini sağlayan tüm sistem bileşenlerini kapsar. Modülerlik, gerçek zamanlı işletim ve donanım bağımsızlığı (Hardware Agnosticism) üzerine inşa edilmiştir.
+
+ARGUS ekosistemi, bir İHA'nın sadece "uçmasını" değil, **çatışmalı ve GPS-denied ortamlarda görev icra edebilen bir hava robotu** haline gelmesini sağlayan tüm sistem bileşenlerini kapsar.
 
 ### 🧩 Temel Sütunlar
 1. **Düşük Gecikmeli Kontrol (Low-Latency Loop):** 400Hz+ PID döngüleri.
@@ -21,9 +23,7 @@ Bu depo, bir İHA'nın sadece "uçmasını" değil, **çatışmalı ve GPS-denie
 
 ---
 
-## 🏗️ Sistem Topolojisi (Network & Hardware)
-
-Modern bir İHA'nın sinir sistemi iki ana düğüm etrafında şekillenir:
+## 🏗️ Sistem Topolojisi (Mantıksal & Fiziksel)
 
 ```mermaid
 graph LR
@@ -66,32 +66,6 @@ graph LR
 
 ---
 
-## 📡 İletişim Protokolleri & Veriyolu Mimarisi
-
-Hız ve gürültü bağışıklığı için optimize edilmiş fiziksel katman planı:
-
-- **Endüstriyel Bus:** `CAN-FD` / `DroneCAN` (ESC ve GPS birimleri için).
-- **Yüksek Bant Genişliği:** `Gigabit Ethernet` (Kamera ve CC-to-FC haberleşmesi için).
-- **Hızlı Sensörler:** `SPI` (Jiroskop ve İvmeölçer verileri için).
-
----
-
-## 📂 Depo Organizasyonu
-
-```text
-uav-systems-architecture/
-├── 📁 docs/           # Teknik Beyaz Bültenler & Standartlar
-├── 📁 src/            # Otonomi ve GNC Kod Kaynakları
-│   ├── 🛠️ gnc/        # Guidance, Navigation, Control (C++)
-│   ├── 👁️ perception/ # Computer Vision & Sensor Fusion (Python)
-│   └── 🛰️ middleware/ # MAVLink/DDS Bridge Configs
-├── 📁 scripts/        # Kurulum ve Otomasyon Betikleri
-├── 📁 docker/         # Konteynırlanmış Geliştirme Ortamı
-└── 📄 README.md       # Bu Doküman
-```
-
----
-
 ## 🚀 Hızlı Başlangıç (Quickstart)
 
 Tüm geliştirme ortamını (ROS2, MAVLink SDK, OpenCV) tek komutla ayağa kaldırın:
@@ -101,24 +75,13 @@ chmod +x scripts/bootstrap.sh
 ./scripts/bootstrap.sh --install-all
 ```
 
-Veya Docker kullanarak izole bir ortamda çalışın:
+---
 
-```bash
-docker-compose up -d uav_sim_env
+**arch-yunus tarafından ⚔️ ile geliştirilmiştir.**
+
+---
+
+## 📄 Lisans
+
+Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır. Sistem mimarileri paylaşıldıkça güçlenir, açık kaynak komünitesine katkıda bulunmaktan çekinmeyin.
 ```
-
----
-
-## 🛣️ Roadmap & Milestones
-
-- [ ] **Phase 1: Foundation** - GNC C++ çekirdeği ve ROS2 entegrasyonu.
-- [ ] **Phase 2: Vision** - TensorRT ile gerçek zamanlı hedef takibi.
-- [ ] **Phase 3: Swarm** - Çoklu İHA koordinasyon protokolleri.
-- [ ] **Phase 4: Sovereign** - Tam otonom, GPS-denied görev simülasyonu.
-
----
-
-## 🤝 Katkıda Bulunma
-Sistem mimarileri paylaşıldıkça güçlenir. Kritik buglar veya mimari öneriler için PR (Pull Request) göndermekten çekinmeyin.
-
-**Developed with ⚔️ by arch-yunus.**
