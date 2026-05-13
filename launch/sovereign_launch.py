@@ -28,6 +28,17 @@ def generate_launch_description():
             output='screen'
         ),
         
+        # Middleware - MAVLink DDS Bridge
+        Node(
+            package='sungur_architecture',
+            executable='mavlink_dds_bridge.py',
+            name='mavlink_dds_bridge',
+            output='screen',
+            parameters=[
+                {'mavlink_conn': 'udp:127.0.0.1:14550'}
+            ]
+        ),
+        
         # Perception - Target Perception (Optional startup)
         Node(
             package='sungur_architecture',
